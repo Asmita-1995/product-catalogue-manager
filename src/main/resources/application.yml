@@ -1,0 +1,39 @@
+server:
+  port: 8080
+  tomcat:
+    max-threads: 10
+    min-spare-threads: 1
+
+spring:
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:pcm
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true        
+        generate_statistics: false
+    hibernate:
+      ddl-auto: none      
+  application:
+    name: Product Catalogue Service
+
+info:
+  app:
+    name: Product Catalogue Service
+    description: Product Catalogue Service
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: health,info,env,configprops  
+        
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
